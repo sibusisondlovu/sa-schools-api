@@ -2,6 +2,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import schoolRoutes from './routes/schools.js';
+import usersRoutes from './routes/users.js';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api', schoolRoutes);
+app.use('/api/users', usersRoutes);
 
 // Root Test
 app.get('/', (req, res) => {
