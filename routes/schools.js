@@ -66,4 +66,19 @@ router.get('/school-search', async (req, res) => {
     }
 });
 
+// === GET ALL SCHOOLS ===
+router.get('/schools', async (req, res) => {
+    try {
+        const [rows] = await pool.query(
+            `SELECT *
+       FROM schools
+       ORDER BY school_name`
+        );
+        res.json(rows);
+    } catch (error) {
+        console.error('Error fetching schools:', error);
+        res.status(500).json({ error: 'Failed to fetch schools' });
+    }
+});
+
 export default router;
